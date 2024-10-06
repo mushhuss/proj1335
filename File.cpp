@@ -84,12 +84,17 @@ bool File::operator<(const File& rhs) const {
             
          }
 
+         
+
          if (pcount == 0){
             filename_ = filename + ".txt";
          }
          else if(pcount == 1){
             if (pindex  == filename.length() - 1){
                filename_ = filename + "txt";
+            }
+            else if (filename == ""){
+               filename_ = "FileName.txt";
             }
             else{
                filename_ = filename;
