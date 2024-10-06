@@ -56,7 +56,7 @@ bool File::operator<(const File& rhs) const {
       * @note You'll notice we provide a default value for the first possible argument (filename)
       *       Yes, this means we can define override the default constructor and define a parameterized one simultaneously.
       */
-      File::File(const std::string &filename = "NewFile.txt", const std::string &contents ="", int *icon = nullptr) : contents_(contents), icon_(icon) {
+      File::File(const std::string &filename, const std::string &contents, int *icon) : contents_(contents), icon_(icon) {
 
          int pcount = 0;
          int pindex;
