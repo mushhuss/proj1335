@@ -84,10 +84,10 @@ bool File::operator<(const File& rhs) const {
             
          }
 
-         if (pcount = 0){
+         if (pcount == 0){
             filename_ = filename + ".txt";
          }
-         else if(pcount = 1){
+         else if(pcount == 1){
             if (pindex  == filename.length() - 1){
                filename_ = filename + "txt";
             }
@@ -162,7 +162,6 @@ bool File::operator<(const File& rhs) const {
        *    - ALl pointers are set to nullptr
        */
       File::File(File &&rhs) : filename_(std::move(rhs.filename_)), contents_(std::move(rhs.contents_)), icon_(rhs.icon_){
-
       
          rhs.icon_ = nullptr;//make ready to delete
 

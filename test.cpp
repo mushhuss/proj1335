@@ -8,7 +8,7 @@ Muslim Hussaini
 
 int main(){
 
-std::cout << "hi" << std::endl;
-return 0;
+File file1("", "", nullptr);
+std::cout << file1.getName();
 
 }
