@@ -85,9 +85,7 @@ void Folder::display() {
          count += (*i).getSize(); //need to dereference here so u can use getSize();
 
       }
-
       return count;
-
 
      }
       
@@ -101,7 +99,24 @@ void Folder::display() {
        */
       bool Folder::addFile (File &new_file){
          
+         if ( new_file.getName().empty()){
+            return false;
+         }
+         
+         for(auto i = files_.begin(); i != files_.end(); ++i){
+
+            if((*i).getName() == new_file.getName()){
+
+               return false;
+
+            }
+
+         }
+         
+         files_.push_back(std::move(new_file));
+
          return true;
+
 
       }
 
