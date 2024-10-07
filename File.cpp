@@ -97,8 +97,9 @@ bool File::operator<(const File& rhs) const {
                filename_ = filename;
             }
          }
+
          if (filename == ""){
-            filename_ == "NewFile.txt";
+            filename_ = "NewFile.txt";
          }
 
       }
