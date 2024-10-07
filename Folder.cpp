@@ -101,18 +101,16 @@ void Folder::display() {
          
          if ( new_file.getName().empty()){
             return false;
+
          }
          
          for(auto i = files_.begin(); i != files_.end(); ++i){
-
             if((*i).getName() == new_file.getName()){
-
                return false;
-
             }
 
          }
-         
+
          files_.push_back(std::move(new_file));
 
          return true;
@@ -130,7 +128,16 @@ void Folder::display() {
        */
       bool Folder::removeFile(const std::string &name){
          
-         return true;
+         for (auto i = files_.begin(); i != files_.end(); ++i){
+
+            if((*i).getName() == name){
+               files_.erase(i);
+               return true;
+            }
+         }
+
+         return false;
+
       }
 
       /**
@@ -147,7 +154,32 @@ void Folder::display() {
        */
       bool Folder::moveFileTo(const std::string &name, Folder &destination){
 
-         return true;
+         if ( this == &destination){ // moving it to itself, succesful
+            return true;
+         }
+
+         for( auto i= destination.files_.begin(); i!=destination.files_.end(); ++i){
+            if((*i).getName() == name){
+               return false; //if object with same name already exists return false
+            }
+         }
+
+         //if not , move
+         for(auto j = files_.begin(); j!= files_.end(); ++j){
+
+            if((*j).getName() == name ){
+
+               File& temp = (*j); //temp to avoid dangalaing pointer
+               destination.addFile(*j);
+               
+               files_.erase(j);
+               return true;
+            }
+
+         }
+
+         return false;
+
       }
 
       /**
