@@ -17,6 +17,7 @@ int main() {
     File file6 = std::move(file1);
     File file7 = File("bruh.jpeg");
     file7 = file1;
+    File file8("abc.");
 
     // check names of each file
     std::cout << file1.getName() << std::endl;
@@ -26,6 +27,7 @@ int main() {
     std::cout << file5.getName() <<std::endl;
     std::cout << file6.getName() <<std::endl;
     std::cout << file7.getName() << std::endl;
+    std::cout << file8.getName() << std::endl;
 
     return 0;
 }
