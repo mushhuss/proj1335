@@ -84,6 +84,8 @@ bool File::operator<(const File& rhs) const {
             
          }
 
+         
+
          if (pcount == 0){
             filename_ = filename + ".txt";
          }
@@ -91,13 +93,12 @@ bool File::operator<(const File& rhs) const {
             if (pindex  == filename.length() - 1){
                filename_ = filename + "txt";
             }
+            else if (filename == ""){
+               filename_ == "NewFile.txt";
+            }
             else{
                filename_ = filename;
             }
-         }
-
-         if (filename == ""){
-               filename_ = "NewFile.txt";
          }
 
       }
@@ -121,7 +122,7 @@ bool File::operator<(const File& rhs) const {
 
         if (rhs.icon_) { //if its not nullptr 
             icon_ = new int[ICON_DIM];
-            for (auto i=0; i< ICON_DIM; i++){
+            for (int i =0; i < ICON_DIM; i++){
                icon_[i] = rhs.icon_[i];
             }
         }
@@ -145,20 +146,13 @@ bool File::operator<(const File& rhs) const {
             return *this;
          }
 
-         if (rhs.icon_) {
+         //temp copy so we can swap stuff
+         File temp(rhs); 
 
-            icon_ = new int[ICON_DIM]; 
-
-            std::copy(rhs.icon_, rhs.icon_ + ICON_DIM, icon_); 
-
-         } 
-
-         else {
-            icon_ = nullptr;
-         }
-
-        contents_ = rhs.contents_;
-        filename_ = rhs.filename_;
+         //swapping elements
+         std::swap(filename_, temp.filename_);
+         std::swap(contents_, temp.contents_);
+         std::swap(icon_, temp.icon_);
 
          return *this; //returns reference to the new file copy
 
