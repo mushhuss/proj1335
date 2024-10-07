@@ -196,5 +196,30 @@ void Folder::display() {
          */
         bool Folder::copyFileTo(const std::string &name, Folder &destination){
 
-         return true;
+         if(name.empty()){
+            return false;
+         }
+
+         for (auto i=destination.files_.begin(); i != destination.files_.end(); ++i){
+
+            if((*i).getName() == name){
+               return false;
+            }
+
+         }
+
+         for( auto j = files_.begin(); j != files_.end(); ++j){
+
+            if((*j).getName() == name){
+
+               File temp = File(*j);
+               destination.files_.push_back(temp);
+               return true;
+
+            }
+
+         }
+
+         return false;
+
         }
