@@ -10,12 +10,12 @@ int main() {
 
     // Create files with different names, and copying/moving various files
     File file1; 
-    File file2(".env", "aaaaa");
-    File file3("aaa", "Content");
+    File file2(".jpeg", "hi");
+    File file3("bb", "random");
     File file4 = File(file1);
     File file5 = file3;
     File file6 = std::move(file1);
-    File file7 = File("hello.png");
+    File file7 = File("bruh.jpeg");
     file7 = file1;
 
     // check names of each file
